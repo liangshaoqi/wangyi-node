@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <input type="text" id='fileName'><br>
+    <textarea id="txt" cols="30" rows="10"></textarea>
+    <button id='btn'>生成文件</button>
+    <script src="../jq/jq.js"></script>
+<script>  
+    btn.onclick = () => {
+        $.ajax({
+            url:'http://localhost:8080',
+            type: 'get',
+            data:{
+                file: fileName.value,
+                inner:txt.value
+            },
+            success: () => {
+                console.log('生成完毕')
+            } 
+        })
+    }
+</script>
+</body>
+</html>

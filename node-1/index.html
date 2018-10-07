@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    账号:<input type="text" id='user'>
+    账号:<input type="text" id='pwd'>
+    <button onclick='login()'>
+        登录
+    </button>
+    <script>
+        login = () => {
+            let ajax = new XMLHttpRequest()
+            ajax.open('get', 'http://localhost:8080?user='+ user.value+'&pwd='+pwd.value, true)
+            ajax.send()
+            ajax.onreadystatechange = () => {
+                console.log(ajax.readyState)
+                if (ajax.readyState === 4) {
+                    if (ajax.status >= 200 && ajax.status < 300 || ajax.status === 304) {
+                        console.log(ajax.responseText)
+                    } else {
+                        console.log('服务器错误')
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
