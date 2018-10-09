@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jq/jq.js"></script>
+</head>
+<body>
+    <input type="text" id='song'>
+    <button id='search'>
+        搜索
+    </button>
+    <script>
+        search.onclick = () => {
+            $.ajax({
+                url: 'http://myjavascript.cn:5213/myClevaly/addMp3',
+                type: 'get',
+                data: {
+                    user: 'lsq',
+                    mp3Name: song.value
+                },
+                success: (data) => {
+                    console.log(data)
+                }
+            })
+        }
+    </script>
+</body>
+</html>

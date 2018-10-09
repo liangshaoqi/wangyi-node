@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            list-style: none;
+        }
+
+    </style>
+    <script src="../jq/jq.js"></script>
+</head>
+<body>
+    <div id="setText">
+        文章名: <input type="text" id='titleName'><br>
+        <p>文章内容</p>
+        <textarea name="" id="txt" cols="30" rows="10"></textarea>
+        <button id='submit'>提交</button>
+    </div>
+    <script>
+        submit.onclick = () => {
+            $.ajax({
+                url: 'http://localhost:8080',
+                type: 'get',
+                data: {
+                    title: titleName.value,
+                    content: txt.value 
+                },
+                success: (data) => {
+                    console.log(data)
+                    //循环数据显示
+                }
+            })
+        }
+    </script>
+</body>
+</html>
