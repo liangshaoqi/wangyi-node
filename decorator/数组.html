@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let str1 = [1, 3, 4, 6]
+    let str2 = [1, 3, 4, 8, 9]
+    let filter = (str1, str2) => {
+        console.log(str1.concat(str2))
+        return str1.concat(str2).filter((item, index, arr) => {
+            console.log(arr.indexOf(item))
+            console.log(arr.lastIndexOf(item))
+            console.log('------')
+            console.log(arr.indexOf(item) === arr.lastIndexOf(item))
+            return arr.indexOf(item) === arr.lastIndexOf(item)
+        })
+    }
+    console.log(filter(str1, str2))
+</script>
+</body>
+</html>
