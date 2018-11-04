@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='../jq/jq.js'></script>
+</head>
+<body>
+    用户: <input type="text" id='user'><br>
+    密码: <input type="text" id='pwd'><br>
+    <button id='res'>注册</button>
+    <button id='login'>登录</button>
+<script>
+    res.onclick = () => {
+        $.ajax({
+            type: 'get',
+            url: 'http://localhost:8080',
+            data: {
+                user: user.value,
+                pwd: pwd.value
+            },
+            success: (data)=>{
+                
+                
+            }
+        })
+    }
+    login.onclick = () => {
+        $.ajax({
+            type: 'post',
+            url: 'http://localhost:8080',
+            data: {
+                user: user.value,
+                pwd: pwd.value
+            },
+            success: (data)=>{
+                console.log(data)
+            }
+        })
+    }
+</script>
+</body>
+</html>
