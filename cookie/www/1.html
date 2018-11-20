@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jq.js"></script>
+</head>
+<body>
+    <span></span>
+    用户: <input type="text" id='user'><br>
+    密码: <input type="text" id='pass'><br>
+    <button id='btn'>登录</button><br>
+    <input type="checkbox" id='auto'>自动登录
+    <script>
+        (function c(){
+            $.ajax({
+                url: 'http://localhost:8080/lsq',
+                type: 'get',
+                success: (data) => {
+                    user.value = data.user
+                    pass.value = data.password
+                    setTimeout(() => {
+                        $.ajax({
+                            url: 'http://localhost:8080/login',
+                            type: 'get',
+                            data: {
+                                user: user.value,
+                                password: pass.value
+                            },
+                            success: (data) => {
+                                console.log(data)
+                                if(data === 'ok') {
+                                    alert('自动登录成功')
+                                }
+                            }
+                        })
+                    }, 3000)
+                }
+            })
+        })()
+    </script>
+</body>
+</html>
